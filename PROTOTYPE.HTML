@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Orea-Link | Linking Ideas into the Beauty of Innovations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf6ee;
+            --bg2: #f1eadb;
+            --ink: #14213d;
+            --mut: #5c6478;
+            --gold: #b8893b;
+            --card: #fffdf8;
+            --line: #e2d8c3;
+            --nav: rgba(250, 246, 238, .92)
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #0f1524;
+                --bg2: #151c30;
+                --ink: #f3ecdc;
+                --mut: #a3abbd;
+                --gold: #d9a85a;
+                --card: #182039;
+                --line: #2a3452;
+                --nav: rgba(15, 21, 36, .92)
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 16px/1.7 Inter, Georgia, "Segoe UI", sans-serif
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            line-height: 1.2;
+            margin: 0 0 .5em
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 22px
+        }
+
+        section {
+            padding: 84px 0
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-size: .78rem;
+            font-weight: 600
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem)
+        }
+
+        .lead {
+            color: var(--mut);
+            max-width: 620px
+        }
+
+        .rule {
+            width: 56px;
+            height: 2px;
+            background: var(--gold);
+            margin: 14px 0 22px;
+            border: 0
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            background: var(--nav);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 66px
+        }
+
+        .logo {
+            font-family: "Playfair Display", Georgia, serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-decoration: none
+        }
+
+        .logo b {
+            color: var(--gold)
+        }
+
+        nav a {
+            margin-left: 26px;
+            text-decoration: none;
+            font-size: .92rem;
+            color: var(--mut)
+        }
+
+        nav a:hover {
+            color: var(--gold)
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--ink);
+            color: var(--bg);
+            padding: 13px 28px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .92rem;
+            border: 1px solid var(--ink);
+            border-radius: 2px;
+            transition: .3s;
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #fff
+        }
+
+        nav .btn {
+            padding: 9px 20px;
+            color: var(--bg)
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: var(--ink);
+            margin-left: 12px
+        }
+
+        .hero {
+            padding: 150px 0 90px;
+            background: var(--bg2)
+        }
+
+        .hero .wrap {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 48px;
+            align-items: center
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem)
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: italic
+        }
+
+        .stats {
+            display: flex;
+            gap: 34px;
+            margin-top: 38px;
+            flex-wrap: wrap
+        }
+
+        .stats strong {
+            display: block;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.8rem
+        }
+
+        .stats span {
+            font-size: .82rem;
+            color: var(--mut)
+        }
+
+        /* pictures with zoom in / zoom out */
+        .pic {
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid var(--line);
+            background: #14213d;
+            position: relative;
+            box-shadow: 0 14px 34px rgba(20, 33, 61, .16)
+        }
+
+        .pic .z {
+            transition: transform 1s cubic-bezier(.2, .7, .2, 1)
+        }
+
+        .pic:hover .z {
+            transform: scale(1.16)
+        }
+
+        .pic svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            animation: breathe 14s ease-in-out infinite alternate
+        }
+
+        @keyframes breathe {
+            from {
+                transform: scale(1)
+            }
+
+            to {
+                transform: scale(1.07)
+            }
+        }
+
+        .pic figcaption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 26px 16px 12px;
+            color: #fff;
+            font-size: .82rem;
+            background: linear-gradient(transparent, rgba(10, 16, 32, .78))
+        }
+
+        figure {
+            margin: 0
+        }
+
+        .grid {
+            display: grid;
+            gap: 26px
+        }
+
+        .g3 {
+            grid-template-columns: repeat(3, 1fr)
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform .4s, box-shadow .4s
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(20, 33, 61, .14)
+        }
+
+        .card .pic {
+            border: 0;
+            border-radius: 0;
+            box-shadow: none
+        }
+
+        .card .in {
+            padding: 22px 24px 26px
+        }
+
+        .card h3 {
+            font-size: 1.25rem
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--mut);
+            font-size: .94rem
+        }
+
+        .steps {
+            counter-reset: s;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            margin-top: 40px
+        }
+
+        .step {
+            border-top: 2px solid var(--gold);
+            padding-top: 18px
+        }
+
+        .step:before {
+            counter-increment: s;
+            content: "0" counter(s);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 2rem;
+            color: var(--gold);
+            display: block
+        }
+
+        .step h3 {
+            font-size: 1.08rem
+        }
+
+        .step p {
+            font-size: .88rem;
+            color: var(--mut);
+            margin: 0
+        }
+
+        .alt {
+            background: var(--bg2)
+        }
+
+        .gal {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 34px
+        }
+
+        .gal .w2 {
+            grid-column: span 2
+        }
+
+        .gal svg {
+            height: 260px
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 54px;
+            align-items: center
+        }
+
+        .quote {
+            font-family: "Playfair Display", Georgia, serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            border-left: 3px solid var(--gold);
+            padding-left: 18px;
+            margin: 24px 0 0
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 48px
+        }
+
+        .ci {
+            list-style: none;
+            padding: 0;
+            margin: 26px 0 0
+        }
+
+        .ci li {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .ci span {
+            color: var(--mut);
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: .1em
+        }
+
+        .ci a {
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all
+        }
+
+        .ci a:hover {
+            color: var(--gold)
+        }
+
+        form {
+            background: var(--card);
+            border: 1px solid var(--line);
+            padding: 30px;
+            border-radius: 4px
+        }
+
+        label {
+            display: block;
+            font-size: .82rem;
+            font-weight: 600;
+            margin: 0 0 6px
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            border: 1px solid var(--line);
+            background: var(--bg);
+            color: var(--ink);
+            font: inherit;
+            border-radius: 2px
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 1px
+        }
+
+        footer {
+            background: #0f1524;
+            color: #c9c3b3;
+            padding: 44px 0 34px;
+            text-align: center;
+            font-size: .88rem
+        }
+
+        footer .logo {
+            color: #f3ecdc;
+            display: inline-block;
+            margin-bottom: 6px
+        }
+
+        footer p {
+            margin: 4px 0
+        }
+
+        @media(max-width:900px) {
+
+            .hero .wrap,
+            .about,
+            .contact {
+                grid-template-columns: 1fr
+            }
+
+            .g3 {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .gal {
+                grid-template-columns: 1fr 1fr
+            }
+
+            nav a:not(.btn) {
+                display: none
+            }
+
+            section {
+                padding: 64px 0
+            }
+
+            .hero {
+                padding-top: 120px
+            }
+        }
+
+        @media(max-width:560px) {
+
+            .g3,
+            .steps {
+                grid-template-columns: 1fr
+            }
+
+            .btn.ghost {
+                margin: 12px 0 0
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            .pic svg {
+                animation: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#1d2f5c" />
+                <stop offset="1" stop-color="#0f6b73" />
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#b8893b" />
+                <stop offset="1" stop-color="#8a3d2a" />
+            </linearGradient>
+            <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#14213d" />
+                <stop offset="1" stop-color="#5b3a7a" />
+            </linearGradient>
+            <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#2f6b4f" />
+                <stop offset="1" stop-color="#14213d" />
+            </linearGradient>
+            <symbol id="a1" viewBox="0 0 400 260">
+                <rect width="400" height="260" fill="url(#g1)" />
+                <circle cx="330" cy="50" r="70" fill="#fff" opacity=".07" />
+                <rect x="60" y="40" width="280" height="180" rx="8" fill="#faf6ee" />
+                <rect x="60" y="40" width="280" height="24" rx="8" fill="#e2d8c3" />
+                <circle cx="76" cy="52" r="4" fill="#b8893b" />
+                <circle cx="90" cy="52" r="4" fill="#8a3d2a" />
+                <circle cx="104" cy="52" r="4" fill="#2f6b4f" />
+                <rect x="80" y="82" width="120" height="14" fill="#14213d" />
+                <rect x="80" y="104" width="90" height="8" fill="#9aa1b3" />
+                <rect x="80" y="120" width="70" height="20" fill="#b8893b" />
+                <rect x="220" y="82" width="100" height="70" fill="#1d2f5c" opacity=".85" />
+                <rect x="80" y="164" width="60" height="42" fill="#e2d8c3" />
+                <rect x="150" y="164" width="60" height="42" fill="#e2d8c3" />
+                <rect x="220" y="164" width="100" height="42" fill="#e2d8c3" />
+            </symbol>
+            <symbol id="a2" viewBox="0 0 400 260">
+                <rect width="400" height="260" fill="url(#g3)" />
+                <rect x="40" y="36" width="320" height="188" rx="8" fill="#0b1020" />
+                <g font-family="monospace" font-size="13"><text x="60" y="70" fill="#d9a85a">const</text><text x="106"
+                        y="70" fill="#f3ecdc">app = build({</text><text x="80" y="94" fill="#7fd1c7">api:
+                        "secure",</text><text x="80" y="118" fill="#7fd1c7">database: "fast",</text><text x="80" y="142"
+                        fill="#7fd1c7">frontend: "elegant"</text><text x="60" y="166" fill="#f3ecdc">});</text><text
+                        x="60" y="196" fill="#d9a85a">app.launch();</text></g>
+                <rect x="290" y="176" width="9" height="18" fill="#d9a85a" />
+            </symbol>
+            <symbol id="a3" viewBox="0 0 400 260">
+                <rect width="400" height="260" fill="url(#g2)" />
+                <rect x="70" y="60" width="260" height="140" rx="6" fill="#faf6ee" />
+                <rect x="88" y="78" width="70" height="70" fill="#14213d" />
+                <rect x="170" y="78" width="70" height="70" fill="#b8893b" />
+                <rect x="252" y="78" width="60" height="70" fill="#2f6b4f" />
+                <rect x="88" y="158" width="70" height="8" fill="#9aa1b3" />
+                <rect x="170" y="158" width="70" height="8" fill="#9aa1b3" />
+                <rect x="252" y="158" width="60" height="8" fill="#9aa1b3" />
+                <rect x="88" y="174" width="50" height="14" fill="#14213d" />
+                <circle cx="330" cy="54" r="22" fill="#14213d" />
+                <path d="M320 48h20l-3 14h-14z" fill="#faf6ee" />
+            </symbol>
+            <symbol id="a4" viewBox="0 0 400 260">
+                <rect width="400" height="260" fill="url(#g4)" />
+                <rect x="110" y="24" width="180" height="212" rx="16" fill="#faf6ee" />
+                <rect x="128" y="46" width="144" height="12" fill="#14213d" />
+                <rect x="128" y="66" width="110" height="7" fill="#9aa1b3" />
+                <rect x="128" y="96" width="144" height="70" fill="#b8893b" />
+                <rect x="128" y="180" width="144" height="26" rx="13" fill="#14213d" />
+                <circle cx="60" cy="60" r="34" fill="#fff" opacity=".08" />
+                <circle cx="340" cy="200" r="46" fill="#fff" opacity=".08" />
+            </symbol>
+            <symbol id="a5" viewBox="0 0 400 260">
+                <rect width="400" height="260" fill="url(#g3)" />
+                <g fill="none" stroke="#f3ecdc" stroke-width="2">
+                    <rect x="50" y="46" width="130" height="90" rx="4" />
+                    <rect x="200" y="46" width="150" height="40" rx="4" />
+                    <rect x="200" y="100" width="70" height="36" rx="4" />
+                    <rect x="280" y="100" width="70" height="36" rx="4" />
+                    <rect x="50" y="154" width="300" height="60" rx="4" stroke-dasharray="6 5" />
+                </g>
+                <circle cx="115" cy="91" r="18" fill="#d9a85a" />
+                <rect x="290" y="188" width="28" height="28" fill="#d9a85a" transform="rotate(20 304 202)" />
+            </symbol>
+            <symbol id="a6" viewBox="0 0 400 260">
+                <rect width="400" height="260" fill="url(#g1)" />
+                <g transform="translate(200 130)" fill="#faf6ee">
+                    <circle r="52" />
+                    <circle r="22" fill="#1d2f5c" />
+                    <g fill="#d9a85a">
+                        <rect x="-9" y="-72" width="18" height="24" />
+                        <rect x="-9" y="48" width="18" height="24" />
+                        <rect x="-72" y="-9" width="24" height="18" />
+                        <rect x="48" y="-9" width="24" height="18" />
+                    </g>
+                </g>
+                <circle cx="60" cy="50" r="30" fill="#fff" opacity=".07" />
+                <path d="M50 220q150-50 300 0" stroke="#d9a85a" stroke-width="3" fill="none" />
+            </symbol>
+            <symbol id="a7" viewBox="0 0 400 260">
+                <rect width="400" height="260" fill="url(#g2)" />
+                <path d="M0 200 L90 130 L160 175 L260 90 L400 190 V260H0z" fill="#14213d" opacity=".85" />
+                <circle cx="300" cy="62" r="30" fill="#faf6ee" />
+                <path d="M0 225 L120 175 L230 215 L400 160 V260H0z" fill="#0f1524" />
+            </symbol>
+            <symbol id="a8" viewBox="0 0 400 260">
+                <rect width="400" height="260" fill="url(#g4)" />
+                <g fill="#faf6ee">
+                    <rect x="60" y="150" width="46" height="70" />
+                    <rect x="122" y="110" width="46" height="110" />
+                    <rect x="184" y="70" width="46" height="150" />
+                    <rect x="246" y="96" width="46" height="124" fill="#d9a85a" />
+                    <rect x="308" y="42" width="46" height="178" />
+                </g>
+                <path d="M60 120L184 60L308 24" stroke="#d9a85a" stroke-width="3" fill="none" />
+            </symbol>
+        </defs>
+    </svg>
+
+    <header>
+        <div class="wrap bar">
+            <a class="logo" href="#top">Orea<b>-Link</b></a>
+            <nav><a href="#about">About</a><a href="#services">Services</a><a href="#process">Process</a><a
+                    href="#work">Gallery</a><a class="btn" href="#contact">Contact</a></nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <div class="hero">
+            <div class="wrap">
+                <div>
+                    <div class="eyebrow">Web Design &amp; Development Studio</div>
+                    <h1>Linking ideas into the <em>beauty</em> of innovations.</h1>
+                    <p class="lead">Orea-Link is a small, careful studio that turns rough ideas into websites and
+                        digital products people enjoy using. Every page is designed, built and tested by hand.</p>
+                    <p style="margin-top:28px"><a class="btn" href="#contact">Start a project</a><a class="btn ghost"
+                            href="#services">Our services</a></p>
+                    <div class="stats">
+                        <div><strong>6</strong><span>Core services</span></div>
+                        <div><strong>100%</strong><span>Hand-crafted</span></div>
+                        <div><strong>24/7</strong><span>Care after launch</span></div>
+                    </div>
+                </div>
+                <figure class="pic">
+                    <div class="z"><svg viewBox="0 0 400 260" role="img" aria-label="Website design preview">
+                            <use href="#a1" />
+                        </svg></div>
+                    <figcaption>Designed with care, built to last</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <section id="about">
+            <div class="wrap about">
+                <div class="grid" style="grid-template-columns:1fr 1fr">
+                    <figure class="pic">
+                        <div class="z"><svg viewBox="0 0 400 260">
+                                <use href="#a7" />
+                            </svg></div>
+                    </figure>
+                    <figure class="pic" style="margin-top:34px">
+                        <div class="z"><svg viewBox="0 0 400 260">
+                                <use href="#a5" />
+                            </svg></div>
+                    </figure>
+                </div>
+                <div>
+                    <div class="eyebrow">About Orea-Link</div>
+                    <h2>Where thoughtful design meets solid engineering</h2>
+                    <hr class="rule">
+                    <p class="lead">We believe a good website should feel like it was made by a person who cared. So we
+                        sketch first, write real copy, choose typefaces with intention and test on real phones before
+                        anything goes live.</p>
+                    <p class="lead">Whether you are a new brand, a growing shop or an established business, we link your
+                        idea to the right technology and shape it into something clean, classic and useful.</p>
+                    <p class="quote">Ideas are the seed. Craft is what makes them grow.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="alt">
+            <div class="wrap">
+                <div class="eyebrow">Our Services</div>
+                <h2>What we offer</h2>
+                <hr class="rule">
+                <p class="lead">Everything you need to launch, sell and grow online, under one roof.</p>
+                <div class="grid g3" style="margin-top:38px">
+                    <article class="card">
+                        <figure class="pic">
+                            <div class="z"><svg viewBox="0 0 400 260">
+                                    <use href="#a1" />
+                                </svg></div>
+                        </figure>
+                        <div class="in">
+                            <h3>Website Design</h3>
+                            <p>Elegant, responsive websites that reflect your brand and make a strong first impression
+                                on every screen.</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <figure class="pic">
+                            <div class="z"><svg viewBox="0 0 400 260">
+                                    <use href="#a2" />
+                                </svg></div>
+                        </figure>
+                        <div class="in">
+                            <h3>Full Stack Development</h3>
+                            <p>Front end, back end, databases and APIs, built together so your product is fast, secure
+                                and dependable.</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <figure class="pic">
+                            <div class="z"><svg viewBox="0 0 400 260">
+                                    <use href="#a3" />
+                                </svg></div>
+                        </figure>
+                        <div class="in">
+                            <h3>E-Commerce Stores</h3>
+                            <p>Online shops with smooth product browsing, easy checkout and simple tools for managing
+                                orders.</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <figure class="pic">
+                            <div class="z"><svg viewBox="0 0 400 260">
+                                    <use href="#a4" />
+                                </svg></div>
+                        </figure>
+                        <div class="in">
+                            <h3>Landing Pages</h3>
+                            <p>Focused single pages with clear messaging, made to turn visitors into customers, sign-ups
+                                or enquiries.</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <figure class="pic">
+                            <div class="z"><svg viewBox="0 0 400 260">
+                                    <use href="#a5" />
+                                </svg></div>
+                        </figure>
+                        <div class="in">
+                            <h3>UI &amp; UX Design</h3>
+                            <p>Wireframes, prototypes and interfaces shaped around how real people think, click and
+                                decide.</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <figure class="pic">
+                            <div class="z"><svg viewBox="0 0 400 260">
+                                    <use href="#a6" />
+                                </svg></div>
+                        </figure>
+                        <div class="in">
+                            <h3>Maintenance &amp; Support</h3>
+                            <p>Updates, backups, fixes and improvements, so your site stays healthy long after launch
+                                day.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="wrap">
+                <div class="eyebrow">Services Process</div>
+                <h2>How we work with you</h2>
+                <hr class="rule">
+                <p class="lead">A clear, friendly path from first conversation to a live website.</p>
+                <div class="steps">
+                    <div class="step">
+                        <h3>Discover</h3>
+                        <p>We listen to your goals, audience and ideas, and agree on scope and timeline.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Plan</h3>
+                        <p>Sitemap, wireframes and content structure, so everyone sees the shape before building.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Design</h3>
+                        <p>Colours, type and layouts come together into a look that feels unmistakably yours.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Build</h3>
+                        <p>Clean, tested code brings the design to life on every device and browser.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Launch &amp; Support</h3>
+                        <p>We go live together, then stay close with maintenance and improvements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="alt">
+            <div class="wrap">
+                <div class="eyebrow">Gallery</div>
+                <h2>A glimpse of our craft</h2>
+                <hr class="rule">
+                <p class="lead">Hover over any picture to zoom in.</p>
+                <div class="gal">
+                    <figure class="pic w2">
+                        <div class="z"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+                                <use href="#a3" />
+                            </svg></div>
+                        <figcaption>Boutique store</figcaption>
+                    </figure>
+                    <figure class="pic">
+                        <div class="z"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+                                <use href="#a4" />
+                            </svg></div>
+                        <figcaption>Landing page</figcaption>
+                    </figure>
+                    <figure class="pic">
+                        <div class="z"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+                                <use href="#a8" />
+                            </svg></div>
+                        <figcaption>Analytics dashboard</figcaption>
+                    </figure>
+                    <figure class="pic">
+                        <div class="z"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+                                <use href="#a2" />
+                            </svg></div>
+                        <figcaption>Web application</figcaption>
+                    </figure>
+                    <figure class="pic w2">
+                        <div class="z"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+                                <use href="#a1" />
+                            </svg></div>
+                        <figcaption>Company website</figcaption>
+                    </figure>
+                    <figure class="pic">
+                        <div class="z"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
+                                <use href="#a5" />
+                            </svg></div>
+                        <figcaption>UI/UX prototype</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="wrap contact">
+                <div>
+                    <div class="eyebrow">Contact</div>
+                    <h2>Let us link your idea</h2>
+                    <hr class="rule">
+                    <p class="lead">Tell us about your project, or ask anything about what we do. We reply personally.
+                    </p>
+                    <ul class="ci">
+                        <li><span>Phone</span><a href="tel:+2349110020326">+234 911 002 0326</a></li>
+                        <li><span>E-mail</span><a
+                                href="mailto:adeloyeadeyinka01@gmail.com">adeloyeadeyinka01@gmail.com</a></li>
+                        <li><span>X</span><a href="https://x.com/OREA_LINK" target="_blank" rel="noopener">OREA-LINK</a>
+                        </li>
+                        <li><span>Instagram</span><a href="https://instagram.com/OREA_LINK" target="_blank"
+                                rel="noopener">OREA_LINK</a></li>
+                    </ul>
+                </div>
+                <form id="f">
+                    <label for="n">Your name</label><input id="n" required placeholder="Full name">
+                    <label for="s">Service you need</label>
+                    <select id="s">
+                        <option>Website Design</option>
+                        <option>Full Stack Development</option>
+                        <option>E-Commerce Store</option>
+                        <option>Landing Page</option>
+                        <option>UI &amp; UX Design</option>
+                        <option>Maintenance &amp; Support</option>
+                        <option>Not sure yet</option>
+                    </select>
+                    <label for="m">Tell us about your idea</label><textarea id="m" rows="5" required
+                        placeholder="What would you like to build?"></textarea>
+                    <button class="btn" type="submit">Send message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="logo">Orea<b style="color:#d9a85a">-Link</b></div>
+            <p><em>Linking ideas into the beauty of innovations.</em></p>
+            <p>Website Design · Full Stack Development · E-Commerce · Landing Pages · UI/UX · Support</p>
+            <p>&copy; <span id="y">2026</span> Orea-Link. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('y').textContent = new Date().getFullYear();
+        document.getElementById('f').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var b = 'Name: ' + n.value + '\nService: ' + s.value + '\n\n' + m.value;
+            location.href = 'mailto:adeloyeadeyinka01@gmail.com?subject=' + encodeURIComponent('Project enquiry from ' + n.value) + '&body=' + encodeURIComponent(b);
+        });
+    </script>
+</body>
+
+</html>
